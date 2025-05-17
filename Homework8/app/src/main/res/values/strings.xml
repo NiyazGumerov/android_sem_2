@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Homework 7</string>
+    <string name="error">Ошибка загрузки курса, попробуйте повторить позже</string>
+    <string name="button_another_date">Другая дата</string>
+    <string name="button_actual_course">Актуальный курс</string>
+    <string name="button_ok">Сохранить</string>
+    <string name="button_cancel">Отменить</string>
+    <string name="data_got_from_network">Данные получены из сети</string>
+    <string name="data_got_from_cache">Данные получены из кэша</string>
+</resources>

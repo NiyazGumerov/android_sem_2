@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Homework 7</string>
+    <string name="username">Имя пользователя</string>
+    <string name="password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="entrance">Вход</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="registration">Регистрация</string>
+    <string name="logout">Выйти из профиля</string>
+    <string name="username_is_empty">Имя пользователя не может быть пустым</string>
+    <string name="password_is_empty">Пароль не может быть пустым</string>
+    <string name="wrong_password_format">Пароль должен содержать не менее 8 символов</string>
+    <string name="wrong_username_format">Имя пользователя может содержать только латинские буквы и цифры</string>
+    <string name="user_already_exists">Пользователь с таким именем уже существует</string>
+    <string name="incorrect_login_or_password">Неверный логин или пароль</string>
+</resources>
