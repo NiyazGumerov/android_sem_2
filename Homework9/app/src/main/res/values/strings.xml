@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Homework 9</string>
+    <string name="points_count">Кол-во точек</string>
+    <string name="points_count_is_empty">Кол-во точек не может быть пустым</string>
+    <string name="points_count_is_not_int">Кол-во точек должно быть числом</string>
+    <string name="points_count_is_negative">Кол-во точек должно быть больше одной</string>
+    <string name="points_values_by_commas">Значения точек (через запятую)</string>
+    <string name="points_values_is_empty">Значения точек не может быть пустым</string>
+    <string name="points_values_is_not_int">Значения точек должны быть неотрицательнми числами через запятую</string>
+    <string name="points_count_is_not_equal">Кол-во точек указанных во втором поле должны соответствовать указанному кол-ву точек</string>
+    <string name="generate_graph">Сгенерировать график</string>
+</resources>
