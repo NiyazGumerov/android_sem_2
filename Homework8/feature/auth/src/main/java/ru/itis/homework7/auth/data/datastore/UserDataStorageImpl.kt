@@ -10,10 +10,12 @@ import java.util.UUID
 import javax.inject.Inject
 import androidx.core.content.edit
 import ru.itis.homework7.auth.data.database.di.IoDispatcher
+import ru.itis.homework7.data.Crashlytics
 
 const val USER_ID_KEY = "USER_ID"
 
 class UserDataStorageImpl @Inject constructor(
+    private val crashlytics: Crashlytics,
     private val userSharedPreferences: SharedPreferences,
     private val userDAO: UserDAO,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
@@ -49,6 +51,9 @@ class UserDataStorageImpl @Inject constructor(
             putString(USER_ID_KEY, userId)
         }
     }
+    override suspend fun setUserIdCustomKeyToCrashlytics(userId: String) {
+        crashlytics.setCustomKeyToCrashlytics("USER_ID", userId)
+    }
 }
 
 interface UserDataStorage {
@@ -56,4 +61,5 @@ interface UserDataStorage {
     suspend fun saveUser(username: String, password: String)
     suspend fun getUserByUsername(username: String): UserEntity?
     suspend fun saveUserIdToSharedPreferences(userId: String)
+    suspend fun setUserIdCustomKeyToCrashlytics(userId: String)
 }

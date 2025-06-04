@@ -1,8 +1,6 @@
 package ru.itis.homework7.auth.data.database.di
 
 import android.content.Context
-import android.content.SharedPreferences
-import androidx.room.Database
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides

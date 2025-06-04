@@ -30,9 +30,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import kotlinx.coroutines.tasks.await
 import ru.itis.homework7.R
 import ru.itis.homework7.domain.model.Rates
+import ru.itis.homework7.navigation.Route
 import ru.itis.homework7.presentation.model.RatesState
 import ru.itis.homework7.presentation.viewmodel.RatesViewModel
 import java.text.SimpleDateFormat
@@ -45,7 +51,8 @@ private const val DATE_FORMAT = "yyyy-MM-dd"
 
 @Composable
 fun RatesScreen(
-    ratesViewModel: RatesViewModel = viewModel()
+    navController: NavController,
+    ratesViewModel: RatesViewModel = hiltViewModel()
 ) {
     val ratesState by ratesViewModel.ratesState.collectAsState()
 
@@ -60,9 +67,11 @@ fun RatesScreen(
 
     val context = LocalContext.current
 
-    LaunchedEffect(Unit){
+    val featureEnabled = remember { mutableStateOf(false) }
+
+    LaunchedEffect(Unit) {
         ratesViewModel.sourceSharedFlow.collect {
-            val message = when (it){
+            val message = when (it) {
                 Rates.Source.NETWORK -> messageForNetwork
                 Rates.Source.CACHE -> messageForCache
                 null -> null
@@ -70,6 +79,14 @@ fun RatesScreen(
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
         }
     }
+
+    LaunchedEffect(Unit) {
+        val remoteConfig = Firebase.remoteConfig
+        remoteConfig.setDefaultsAsync(mapOf("feature_enabled" to false))
+        val activated = remoteConfig.fetchAndActivate().await()
+        featureEnabled.value = remoteConfig.getBoolean("feature_enabled")
+    }
+
     Column {
         when (ratesState) {
             RatesState.Init -> {
@@ -97,6 +114,18 @@ fun RatesScreen(
 
             is RatesState.Success -> {
                 val rates = (ratesState as RatesState.Success).rates.rates
+                Button(onClick = {
+                    if (featureEnabled.value) {
+                        navController.navigate(Route.FOR_FIREBASE_ROUTE.destination)
+                    } else {
+                        Toast.makeText(
+                            context,
+                            R.string.remote_config_not_allow,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                ) { Text(text = stringResource(R.string.button_for_remote_config)) }
                 Text(
                     text = formattedDate.value,
                     fontSize = 24.sp,

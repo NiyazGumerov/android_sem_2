@@ -7,4 +7,9 @@
     <string name="button_cancel">Отменить</string>
     <string name="data_got_from_network">Данные получены из сети</string>
     <string name="data_got_from_cache">Данные получены из кэша</string>
+    <string name="remote_config_not_allow">Нет доступа в Remote Config</string>
+    <string name="default_notification_channel_id">321</string>
+    <string name="firebase_title">Вы попоали сюда благодаря Firebase</string>
+    <string name="text_for_toast">Вы уже на этом экране</string>
+    <string name="button_for_remote_config">Remote Config</string>
 </resources>

@@ -8,6 +8,11 @@ plugins {
 
     alias(libs.plugins.dagger.hilt.plugin) apply false
     alias(libs.plugins.android.library) apply false
+
+    //Firebase
+    alias(libs.plugins.gms.google.services) apply false
+    //Firebase Crashlytics
+    alias(libs.plugins.google.firebase.crashlytics) apply false
 }
 
 private val versionMajor = 1

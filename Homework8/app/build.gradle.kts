@@ -5,6 +5,8 @@ plugins {
 
     alias(libs.plugins.google.devtools.ksp)
     alias(libs.plugins.dagger.hilt.plugin) // Hilt plugin
+    alias(libs.plugins.gms.google.services) //Firebase
+    alias(libs.plugins.google.firebase.crashlytics) //Firebase Crashlytics
 }
 
 android {
@@ -89,8 +91,21 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation)
+
+    //Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    // Firebase Cloud Messaging
+    implementation(libs.firebase.messaging)
+    // Crashlytics
+    implementation(libs.firebase.crashlytics)
+    //Remote Config
+    implementation(libs.firebase.config)
+
 
     implementation (libs.compose.navigation)
+    implementation(libs.androidx.work.runtime.ktx)
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 

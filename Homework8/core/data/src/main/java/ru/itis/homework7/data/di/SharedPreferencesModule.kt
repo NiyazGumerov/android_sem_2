@@ -1,4 +1,4 @@
-package ru.itis.homework7.auth.data.database.di
+package ru.itis.homework7.data.di
 
 import android.content.Context
 import android.content.SharedPreferences
