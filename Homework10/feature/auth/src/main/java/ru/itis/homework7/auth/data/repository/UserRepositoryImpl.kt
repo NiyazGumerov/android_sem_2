@@ -1,17 +1,12 @@
 package ru.itis.homework7.auth.data.repository
 
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import ru.itis.homework7.auth.R
 import ru.itis.homework7.auth.data.crypto.hashPassword
 import ru.itis.homework7.auth.data.datastore.UserDataStorage
 import ru.itis.homework7.auth.domain.model.User
 import ru.itis.homework7.auth.domain.repository.UserRepository
 import ru.itis.homework7.data.Effect
-import ru.itis.homework7.data.Success
 import ru.itis.homework7.data.Error
-
+import ru.itis.homework7.data.Success
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(
@@ -28,6 +23,7 @@ class UserRepositoryImpl @Inject constructor(
         } else {
             val userId = userDataStorage.getUserByUsername(username = user.username)!!.id
             userDataStorage.saveUserIdToSharedPreferences(userId = userId)
+            userDataStorage.setUserIdCustomKeyToCrashlytics(userId = userId)
             return Success(Unit)
         }
     }
@@ -40,6 +36,7 @@ class UserRepositoryImpl @Inject constructor(
             )
             val userId = userDataStorage.getUserByUsername(username = user.username)!!.id
             userDataStorage.saveUserIdToSharedPreferences(userId = userId)
+            userDataStorage.setUserIdCustomKeyToCrashlytics(userId = userId)
             return Success(Unit)
 
         } else {
