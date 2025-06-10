@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1021887348135",
+    "project_id": "homework-7-8c1ac",
+    "storage_bucket": "homework-7-8c1ac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021887348135:android:f291f7cc76813834e58a82",
+        "android_client_info": {
+          "package_name": "ru.itis.homework7"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWQAZ3CvVk26MWawpnWG785nliW-9mt9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
